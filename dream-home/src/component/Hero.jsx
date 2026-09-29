@@ -1,3 +1,5 @@
+import hero from '../assets/images/hero-image.png'
+
 function Hero() {
   return (
     <section className="flex items-center justify-between px-10 py-16">
@@ -13,12 +15,14 @@ function Hero() {
         </p>
       </div>
 
-      {/* Image */}
-      <div className="w-1/2">
-        <img
- src="/images/hero-house.jpg"
-          alt="Dream Home"
-          className="w-full rounded-2xl"/>
+     
+      
+       <div>
+         <img
+           src={hero}
+           alt="Dwello"
+           className="w-100"
+         />
       </div>
     </section>
   )
