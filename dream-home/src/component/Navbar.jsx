@@ -13,7 +13,8 @@ function Navbar() {
       <div className="flex items-center gap-6">
         <button className="text-2xl"> <FiSearch /> </button>
         <button className="text-2xl"><FiUser /></button>
-        <button className="rounded-lg bg-black px-6 py-3 text-white"> Sign Up </button>
+        <button className="rounded-lg bg-black px-6 py-3 text-white"> Sign Up
+ </button>
       </div>
     </nav>)
 }
