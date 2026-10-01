@@ -4,7 +4,6 @@ import { BiArea } from 'react-icons/bi'
 import Image1 from '../assets/images/popularResidence/img-1.png'
 import Image2 from '../assets/images/popularResidence/img-2.png'
 import Image3 from '../assets/images/popularResidence/img-3.png'
-
 function PopularResidence() {
   return (
     <section className="bg-white px-16 py-12">

@@ -3,6 +3,7 @@ import Hero from './component/Hero';
 import About from './component/About';
 import WhyChooseUs from './component/WhyChooseUs';
 import PopularResidences from './component/PopularResidense';
+import Coment from './component/coment';
 function App() {
   return (
     <div>
@@ -11,5 +12,6 @@ function App() {
        <About />
        <WhyChooseUs />
        <PopularResidences/>
+        <Coment />
     </div>)}
 export default App;
