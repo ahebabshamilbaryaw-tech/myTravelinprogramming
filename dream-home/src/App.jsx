@@ -11,7 +11,7 @@ function App() {
        <Navbar />
        <Hero />
        <About />
-       <WhyChooseUs />
+       <WhyChooseUs /> 
        <PopularResidences/>
         <Coment />
         <Footer />

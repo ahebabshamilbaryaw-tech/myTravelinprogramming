@@ -1,4 +1,3 @@
-import heroImage from '../assets/images/hero-image.png'
 import { FiMapPin, FiHome, FiDollarSign } from 'react-icons/fi'
 function Hero() {
   return (
