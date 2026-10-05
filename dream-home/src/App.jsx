@@ -3,7 +3,7 @@ import Hero from './component/Hero';
 import About from './component/About';
 import WhyChooseUs from './component/WhyChooseUs';
 import PopularResidences from './component/PopularResidense';
-import Coment from './component/coment';
+import Coment from './component/Coment';
 import Footer from './component/footer';
 function App() {
   return (
