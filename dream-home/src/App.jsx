@@ -4,7 +4,7 @@ import About from './component/About';
 import WhyChooseUs from './component/WhyChooseUs';
 import PopularResidences from './component/PopularResidense';
 import Coment from './component/Coment';
-import Footer from './component/footer';
+import Footer from './component/Footer';
 function App() {
   return (
     <div>
