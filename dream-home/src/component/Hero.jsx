@@ -1,4 +1,5 @@
 import { FiMapPin, FiHome, FiDollarSign } from 'react-icons/fi'
+import heroImage from '../assets/images/hero-image.png'
 function Hero() {
   return (
     <section className="relative min-h-[650px] bg-[#fdf6f0] px-16 pt-16">
@@ -15,7 +16,7 @@ function Hero() {
           <br />
           unique dream home vision
         </p>
-        <button className="mt-8 rounded-md bg-[#2b211c] px-7 py-3 text-sm text-white">
+        <button className="mt-8 roundedss-md bg-[#2b211c] px-7 py-3 text-sm text-white">
           Sign up
         </button>
       </div>
