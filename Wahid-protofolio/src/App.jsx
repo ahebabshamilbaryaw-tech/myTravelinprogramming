@@ -1,6 +1,7 @@
 import SideBar from "./Component/SideBar";
 import Hero from "./Component/Hero";
 import About from "./Component/About"
+import Statistics from "./Component/Statistics";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <SideBar />
       <Hero />
       <About />
+      <Statistics />
     </div>
   )
 }

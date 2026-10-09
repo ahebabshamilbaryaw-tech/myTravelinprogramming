@@ -17,7 +17,7 @@ function About() {
                         alt=""
                         className="h-32 w-32 rounded-full object-cover"
                     />
-                      ስ<div className="flex flex-1 gap-10 rounded-xl bg-white p-5 shadow-lg">          
+                      <div className="flex flex-1 gap-10 rounded-xl bg-white p-5 shadow-lg">          
                   <div className="flex-1">
                             <h3 className="text-2xl font-bold">
                                 Wahid Ahmed
