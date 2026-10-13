@@ -3,7 +3,7 @@ function Service(){
     return(
         <section className="px-26 py-12">
             <div className="flex items-center gap-2">
-                    <div className="h-7 w-7 rotate-45 bg-blue-200"></div>
+                    <div className="h-7 w-7 rotate-45 bg-blue-400"></div>
 
                 <h2 className="text-3xl font-bold text-gray-1200 py-8">Services</h2>
             </div>
