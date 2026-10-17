@@ -4,6 +4,8 @@ import About from "./Component/About"
 import Statistics from "./Component/Statistics";
 import Service from "./Component/Service";
 import Experience from "./Component/Experience"
+import RwcentWorks from "./Component/RwcentWorks"
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
       <Statistics />
       <Service />
       <Experience />
+      <RwcentWorks />
     </div>
   )
 }
