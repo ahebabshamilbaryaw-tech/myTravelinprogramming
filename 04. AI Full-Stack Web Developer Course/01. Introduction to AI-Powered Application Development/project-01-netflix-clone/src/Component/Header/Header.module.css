@@ -1,4 +1,4 @@
-.Header{
+.header{
     background: transparent;
     padding: 16px 0;
     position: fixed;
@@ -7,8 +7,9 @@
     width: 100%;
     z-index: 1000;
     backdrop-filter:blur(3px);
+  
 }
-.Container{
+.container{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,11 +35,86 @@ cursor: pointer;
     flex: 1;
     align-items: center;
 }
-.navlink{
-    color: white;
+.navLink{
+    color: #f5f5f1;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     transition: color 0.3s ease;
     white-space: nowrap;
+}
+.navLink:hover{
+    color: #b3b3b0
+}
+.rightSide{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+.searchContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.searchButton{
+    background: none;
+    border:none;
+    color:#f5f5f1;
+    cursor: pointer;
+    padding: 4px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+.notificationButton{
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #f5f5f1;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+
+}
+.notificationCount{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background-color: #e50914;
+    border-radius: 50%;
+}
+.profileContainer{
+    position: relative;
+   
+}
+.profileButton{
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #f5f5f1;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.profileIcon{
+    width: 32px;
+    height: 32px;
+    background-color: #564d4d;
+    border-radius:4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5f5f1;
+    font-size: 16px;
 }
