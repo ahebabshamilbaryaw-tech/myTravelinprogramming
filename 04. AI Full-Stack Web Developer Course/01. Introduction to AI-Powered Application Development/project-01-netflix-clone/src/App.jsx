@@ -1,9 +1,13 @@
 import Header from "./Component/Header/Header";
+import Hero from "./Component/hero/hero";
 
 function App() {
 
   return (
-    <Header />   
+   <div>
+     <Header />  
+     <Hero />  
+   </div>
   )
 }
 
