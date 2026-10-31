@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 const movieInstance = axios.create({
@@ -9,4 +8,9 @@ const movieInstance = axios.create({
   },
 });
 
+
+console.log(
+  "TMDB Token exists:",
+  Boolean(import.meta.env.VITE_TMDB_ACCESS_TOKEN)
+);
 export { movieInstance };
