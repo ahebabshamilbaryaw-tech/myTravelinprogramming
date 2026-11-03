@@ -1,12 +1,9 @@
 import express from "express";
+import chatROutes from "./chat/chat.routes.js";
 
-const router = express.Router();
+const mainRoutes = express.Router();
 
-router.get("/", (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: "ChatGPT Clone API is working!"
-    });
-});
+// /api/chat
+mainRoutes.use("/chat", chatROutes);
 
-export default router;
+export default mainRoutes;
