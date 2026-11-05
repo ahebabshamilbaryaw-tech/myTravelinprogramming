@@ -1,8 +1,21 @@
+### Get all conversations
 GET http://localhost:3004/api/chat/conversations
-### Create a new conversation
+### Test empty question
 POST http://localhost:3004/api/chat/conversations
 Content-Type: application/json
 
 {
-    "question": "Hello, how are you?"
+    "question": ""
+}
+### Test missing question
+POST http://localhost:3004/api/chat/conversations
+Content-Type: application/json
+
+{}
+### Test question with spaces
+POST http://localhost:3004/api/chat/conversations
+Content-Type: application/json
+
+{
+    "question": "     "
 }

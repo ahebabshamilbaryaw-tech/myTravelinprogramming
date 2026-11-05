@@ -7,7 +7,7 @@ export const getRecentConversationsService = async (limit=5) =>  {
 
 export async function createConversationService(question) {
     try {
-        if (!question.trim()) {
+       if (typeof question !== "string" || !question.trim()) {
             const error = new Error("Question is required");
             error.statusCode = 400;
             throw error;
