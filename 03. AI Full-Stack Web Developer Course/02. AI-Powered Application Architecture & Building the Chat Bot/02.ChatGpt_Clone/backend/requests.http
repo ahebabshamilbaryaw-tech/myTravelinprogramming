@@ -19,3 +19,10 @@ Content-Type: application/json
 {
     "question": "     "
 }
+### Test valid question
+POST http://localhost:3004/api/chat/conversations
+Content-Type: application/json
+
+{
+    "question": "Hello, how are you?"
+}

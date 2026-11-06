@@ -1,8 +1,10 @@
+
 import {
     createConversationService,
     getRecentConversationsService
 } from "../service/chat.service.js";
 
+// Create a new conversation
 export async function createConversationController(req, res) {
     const { question } = req.body;
 
@@ -10,11 +12,12 @@ export async function createConversationController(req, res) {
 
     res.status(201).json({
         success: true,
-        message: "chat created successfully",
+        message: "conversation created successfully",
         data: result
     });
 }
 
+// Get recent conversations
 export async function getConversationController(req, res) {
     const conversations = await getRecentConversationsService();
 
