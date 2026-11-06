@@ -26,3 +26,10 @@ Content-Type: application/json
 {
     "question": "Hello, how are you?"
 }
+### Send a message
+POST http://localhost:3004/api/chat/conversations/6/messages
+Content-Type: application/json
+
+{
+    "content": "I am learning Message Management API."
+}
