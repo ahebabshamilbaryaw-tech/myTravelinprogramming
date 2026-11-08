@@ -1,35 +1,243 @@
-### Get all conversations
+
+
+### 1. Get all conversations
 GET http://localhost:3004/api/chat/conversations
-### Test empty question
-POST http://localhost:3004/api/chat/conversations
-Content-Type: application/json
 
-{
-    "question": ""
-}
-### Test missing question
-POST http://localhost:3004/api/chat/conversations
-Content-Type: application/json
 
-{}
-### Test question with spaces
-POST http://localhost:3004/api/chat/conversations
-Content-Type: application/json
-
-{
-    "question": "     "
-}
-### Test valid question
+### 2. Create a new conversation
 POST http://localhost:3004/api/chat/conversations
 Content-Type: application/json
 
 {
     "question": "Hello, how are you?"
 }
-### Send a message
+
+
+### 3. Test empty question
+POST http://localhost:3004/api/chat/conversations
+Content-Type: application/json
+
+{
+    "question": ""
+}
+
+
+### 4. Test missing question
+POST http://localhost:3004/api/chat/conversations
+Content-Type: application/json
+
+{}
+
+
+### 5. Test whitespace-only question
+POST http://localhost:3004/api/chat/conversations
+Content-Type: application/json
+
+{
+    "question": "     "
+}
+
+
+### ==========================================
+### MESSAGE MANAGEMENT API TESTS
+### ==========================================
+
+### 6. Send a message
 POST http://localhost:3004/api/chat/conversations/6/messages
 Content-Type: application/json
 
 {
     "content": "I am learning Message Management API."
 }
+
+
+### 7. Get all messages in conversation 6
+GET http://localhost:3004/api/chat/conversations/6/messages
+
+
+### 8. Test empty message
+POST http://localhost:3004/api/chat/conversations/6/messages
+Content-Type: application/json
+
+{
+    "content": ""
+}
+
+
+### 9. Test invalid conversation ID
+POST http://localhost:3004/api/chat/conversations/abc/messages
+Content-Type: application/json
+
+{
+    "content": "Hello"
+}
+
+
+### 10. Test conversation not found
+GET http://localhost:3004/api/chat/conversations/99999/messages
+
+### Get a single conversation
+GET http://localhost:3004/api/chat/conversations/6
+
+### Test invalid conversation ID
+GET http://localhost:3004/api/chat/conversations/abc
+
+### Test conversation not found
+GET http://localhost:3004/api/chat/conversations/99999
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Rename conversation
+PUT http://localhost:3004/api/chat/conversations/6
+Content-Type: application/json
+
+{
+    "title": "My First Chat"
+}
+
+### Test empty title
+PUT http://localhost:3004/api/chat/conversations/6
+Content-Type: application/json
+
+{
+    "title": ""
+}
+
+### Test invalid conversation ID
+PUT http://localhost:3004/api/chat/conversations/abc
+Content-Type: application/json
+
+{
+    "title": "Updated Chat"
+}
+
+### Test conversation not found
+PUT http://localhost:3004/api/chat/conversations/99999
+Content-Type: application/json
+
+{
+    "title": "Updated Chat"
+}
+
+
+### Send a message
+POST http://localhost:3004/api/chat/conversations/9/messages
+Content-Type: application/json
+
+{
+    "content": "What is JavaScript?"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Create a temporary conversation for delete test
+POST http://localhost:3004/api/chat/conversations
+Content-Type: application/json
+
+{
+    "question": "Temporary conversation for delete test"
+}
+
+### Delete temporary conversation
+DELETE http://localhost:3004/api/chat/conversations/8
+
+
+
+### Test invalid conversation ID
+DELETE http://localhost:3004/api/chat/conversations/abc
+
+
+
+### Test non-existing conversation
+DELETE http://localhost:3004/api/chat/conversations/99999
+
+
+
+### Get all recent conversations
+GET http://localhost:3004/api/chat/conversations
+
+
+
+
+
+
+
+### Create a new conversation
+POST http://localhost:3004/api/chat/conversations
+Content-Type: application/json
+
+{
+    "question": "Hello, how are you?"
+}
+
+
+
+
+### Get all messages in a conversation
+GET http://localhost:3004/api/chat/conversations/9/messages
+
+
+
+### Get conversation by ID
+GET http://localhost:3004/api/chat/conversations/9
+
+
+
+### Rename conversation
+PUT http://localhost:3004/api/chat/conversations/9
+Content-Type: application/json
+
+{
+    "title": "JavaScript Learning"
+}
+
+
+
+### Delete a conversation
+DELETE http://localhost:3004/api/chat/conversations/9
+
+
+GET http://localhost:3004/api/chat/conversations

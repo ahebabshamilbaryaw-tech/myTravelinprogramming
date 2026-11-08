@@ -1,3 +1,4 @@
+
 import db from "../../../../db/db.config.js";
 
 // Validate conversation ID
@@ -88,9 +89,11 @@ export async function createConversationService(question) {
     try {
         await connection.beginTransaction();
 
+        const cleanQuestion = question.trim();
+
         const [conversationResult] = await connection.execute(
             "INSERT INTO conversation (title) VALUES (?)",
-            [question.trim().slice(0, 50)]
+            [cleanQuestion.slice(0, 50)]
         );
 
         const conversationId = conversationResult.insertId;
@@ -99,7 +102,7 @@ export async function createConversationService(question) {
             `INSERT INTO message
                 (conversation_id, role, content)
              VALUES (?, ?, ?)`,
-            [conversationId, "user", question.trim()]
+            [conversationId, "user", cleanQuestion]
         );
 
         await connection.commit();
@@ -107,8 +110,8 @@ export async function createConversationService(question) {
         return {
             conversationId,
             messageId: messageResult.insertId,
-            title: question.trim().slice(0, 50),
-            content: question.trim()
+            title: cleanQuestion.slice(0, 50),
+            content: cleanQuestion
         };
 
     } catch (error) {
@@ -141,7 +144,6 @@ export async function sendMessageService(conversationId, content) {
         [id, "user", messageContent]
     );
 
-    // Update conversation activity
     await db.execute(
         "UPDATE conversation SET updated_at = CURRENT_TIMESTAMP WHERE id = ?",
         [id]
@@ -152,6 +154,40 @@ export async function sendMessageService(conversationId, content) {
         conversationId: id,
         role: "user",
         content: messageContent
+    };
+}
+
+// Save AI response
+export async function saveAIResponseService(conversationId, content) {
+    const id = validateConversationId(conversationId);
+
+    if (typeof content !== "string" || !content.trim()) {
+        const error = new Error("AI response is required");
+        error.statusCode = 400;
+        throw error;
+    }
+
+    await checkConversationExists(db, id);
+
+    const aiContent = content.trim();
+
+    const [result] = await db.execute(
+        `INSERT INTO message
+            (conversation_id, role, content)
+         VALUES (?, ?, ?)`,
+        [id, "assistant", aiContent]
+    );
+
+    await db.execute(
+        "UPDATE conversation SET updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+        [id]
+    );
+
+    return {
+        messageId: result.insertId,
+        conversationId: id,
+        role: "assistant",
+        content: aiContent
     };
 }
 

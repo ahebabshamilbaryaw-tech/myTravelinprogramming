@@ -1,3 +1,4 @@
+
 import {
     createConversationService,
     getRecentConversationsService,
@@ -5,19 +6,22 @@ import {
     renameConversationService,
     deleteConversationService,
     sendMessageService,
+    saveAIResponseService,
     getMessagesService
 } from "../service/chat.service.js";
+
+import { generateAIResponse } from "../service/ai.service.js";
 
 // Create a new conversation
 export async function createConversationController(req, res) {
     const { question } = req.body;
 
-    const result = await createConversationService(question);
+    const conversation = await createConversationService(question);
 
     res.status(201).json({
         success: true,
         message: "conversation created successfully",
-        data: result
+        data: conversation
     });
 }
 
@@ -27,7 +31,6 @@ export async function getConversationController(req, res) {
 
     res.status(200).json({
         success: true,
-        message: "conversations retrieved successfully",
         data: conversations
     });
 }
@@ -40,26 +43,28 @@ export async function getConversationByIdController(req, res) {
 
     res.status(200).json({
         success: true,
-        message: "conversation retrieved successfully",
         data: conversation
     });
 }
 
-// Rename a conversation
+// Rename conversation
 export async function renameConversationController(req, res) {
     const { conversationId } = req.params;
     const { title } = req.body;
 
-    const result = await renameConversationService(conversationId, title);
+    const conversation = await renameConversationService(
+        conversationId,
+        title
+    );
 
     res.status(200).json({
         success: true,
         message: "conversation renamed successfully",
-        data: result
+        data: conversation
     });
 }
 
-// Delete a conversation
+// Delete conversation
 export async function deleteConversationController(req, res) {
     const { conversationId } = req.params;
 
@@ -77,16 +82,32 @@ export async function sendMessageController(req, res) {
     const { conversationId } = req.params;
     const { content } = req.body;
 
-    const result = await sendMessageService(conversationId, content);
+    // Save user message
+    const userMessage = await sendMessageService(
+        conversationId,
+        content
+    );
+
+    // Generate mock AI response
+    const aiResponse = await generateAIResponse(content);
+
+    // Save AI response
+    const assistantMessage = await saveAIResponseService(
+        conversationId,
+        aiResponse
+    );
 
     res.status(201).json({
         success: true,
         message: "message sent successfully",
-        data: result
+        data: {
+            userMessage,
+            assistantMessage
+        }
     });
 }
 
-// Get all messages in a conversation
+// Get all messages
 export async function getMessagesController(req, res) {
     const { conversationId } = req.params;
 
@@ -94,7 +115,6 @@ export async function getMessagesController(req, res) {
 
     res.status(200).json({
         success: true,
-        message: "messages retrieved successfully",
         data: messages
     });
 }
