@@ -16,12 +16,25 @@ import { generateAIResponse } from "../service/ai.service.js";
 export async function createConversationController(req, res) {
     const { question } = req.body;
 
+    // Create conversation and save user message
     const conversation = await createConversationService(question);
+
+    // Generate mock AI response
+    const aiResponse = await generateAIResponse(question);
+
+    // Save AI response
+    const assistantMessage = await saveAIResponseService(
+        conversation.conversationId,
+        aiResponse
+    );
 
     res.status(201).json({
         success: true,
         message: "conversation created successfully",
-        data: conversation
+        data: {
+            ...conversation,
+            assistantMessage
+        }
     });
 }
 
