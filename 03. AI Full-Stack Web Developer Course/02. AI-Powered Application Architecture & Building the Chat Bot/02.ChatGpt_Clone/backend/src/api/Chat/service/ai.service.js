@@ -1,10 +1,15 @@
-// Mock AI Service
+
+import { GoogleGenAI } from '@google/genai'
+
+const ai = new GoogleGenAI({
+  apiKey: process.env.GEMINI_API_KEY,
+})
 
 export async function generateAIResponse(question) {
-    return `This is a mock AI response.
+  const response = await ai.models.generateContent({
+    model: 'gemini-3.5-flash-lite',
+    contents: question,
+  })
 
-You asked: "${question}"
-
-The AI service is working successfully.
-We can connect a real AI model later.`;
+  return response.text
 }

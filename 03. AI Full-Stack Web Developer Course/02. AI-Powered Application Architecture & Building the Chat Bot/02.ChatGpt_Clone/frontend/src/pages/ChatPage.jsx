@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react'
 
 import Sidebar from '../components/layout/Sidebar'
@@ -10,6 +11,7 @@ import {
   sendMessage,
   getMessages,
   getConversations,
+  deleteConversation,
 } from '../services/chatService'
 
 function ChatPage() {
@@ -25,7 +27,10 @@ function ChatPage() {
         const response = await getConversations()
         setConversations(response.data)
       } catch (error) {
-        console.error('Fetch Conversations Error:', error)
+        console.error(
+          'Fetch Conversations Error:',
+          error.response?.data || error.message
+        )
       }
     }
 
@@ -86,6 +91,38 @@ function ChatPage() {
     setMessages([])
   }
 
+  // Delete conversation
+  const handleDeleteConversation = async (id) => {
+    try {
+      console.log('Deleting Conversation ID:', id)
+
+      // Delete from backend
+      await deleteConversation(id)
+
+      // Remove from sidebar
+      setConversations((prev) =>
+        prev.filter(
+          (conversation) =>
+            Number(conversation.id) !== Number(id)
+        )
+      )
+
+      // Clear chat window if deleted conversation is active
+      if (Number(conversationId) === Number(id)) {
+        setConversationId(null)
+        setMessages([])
+      }
+
+      console.log('Conversation deleted successfully')
+
+    } catch (error) {
+      console.error(
+        'Delete Conversation Error:',
+        error.response?.data || error.message
+      )
+    }
+  }
+
   // Select an existing conversation
   const handleSelectConversation = async (id) => {
     try {
@@ -97,7 +134,10 @@ function ChatPage() {
       setMessages(response.data)
 
     } catch (error) {
-      console.error('Select Conversation Error:', error)
+      console.error(
+        'Select Conversation Error:',
+        error.response?.data || error.message
+      )
     } finally {
       setLoading(false)
     }
@@ -110,6 +150,7 @@ function ChatPage() {
         conversations={conversations}
         onNewChat={handleNewChat}
         onSelectConversation={handleSelectConversation}
+        onDeleteConversation={handleDeleteConversation}
         activeConversationId={conversationId}
       />
 

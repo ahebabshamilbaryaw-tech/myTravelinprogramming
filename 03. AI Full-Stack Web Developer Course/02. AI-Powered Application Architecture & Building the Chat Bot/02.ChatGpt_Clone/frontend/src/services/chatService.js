@@ -25,7 +25,6 @@ export const getMessages = async (conversationId) => {
   return response.data
 }
 
-
 // Send message
 export const sendMessage = async (conversationId, content) => {
   const response = await api.post(

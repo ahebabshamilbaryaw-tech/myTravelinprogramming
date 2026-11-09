@@ -1,13 +1,16 @@
+
 import {
   MessageSquare,
   Plus,
   PanelLeftClose,
+  Trash2,
 } from 'lucide-react'
 
 function Sidebar({
   conversations,
   onNewChat,
   onSelectConversation,
+  onDeleteConversation,
   activeConversationId,
 }) {
   return (
@@ -44,23 +47,40 @@ function Sidebar({
         <div className="flex flex-col gap-1">
 
           {conversations.map((conversation) => (
-            <button
-              key={conversation.conversationId}
-              onClick={() =>
-                onSelectConversation(conversation.conversationId)
-              }
-              className={`flex items-center gap-3 p-3 rounded-lg text-left transition ${
-                activeConversationId === conversation.conversationId
+            <div
+              key={conversation.id}
+              className={`flex items-center rounded-lg group ${
+                Number(activeConversationId) === Number(conversation.id)
                   ? 'bg-[#303030]'
                   : 'hover:bg-[#2a2a2a]'
               }`}
             >
-              <MessageSquare size={18} />
+              {/* Select Conversation */}
+              <button
+                onClick={() =>
+                  onSelectConversation(conversation.id)
+                }
+                className="flex-1 min-w-0 flex items-center gap-3 p-3 text-left"
+              >
+                <MessageSquare size={18} />
 
-              <span className="text-sm truncate">
-                {conversation.title}
-              </span>
-            </button>
+                <span className="text-sm truncate">
+                  {conversation.title}
+                </span>
+              </button>
+
+              {/* Delete Conversation */}
+              <button
+                onClick={() =>
+                  onDeleteConversation(conversation.id)
+                }
+                className="p-2 mr-2 text-gray-400 hover:text-red-400"
+                title="Delete conversation"
+              >
+                <Trash2 size={16} />
+              </button>
+
+            </div>
           ))}
 
           {conversations.length === 0 && (
