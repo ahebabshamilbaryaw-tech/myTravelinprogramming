@@ -4,23 +4,17 @@ import cors from "cors";
 import db from "./db/db.config.js";
 import { errorHandler } from "./src/middleware/error-handler.js";
 import mainRoutes from "./src/api/main.routes.js";
-
 const app = express();
-
 // CORS Configuration
 app.use(cors({
     origin: "http://localhost:5173"
 }));
-
 // Middleware
 app.use(express.json());
-
 // API Routes
 app.use("/api", mainRoutes);
-
 // Global Error Handler
 app.use(errorHandler);
-
 // Start Server
 async function startServer() {
     try {
@@ -41,5 +35,4 @@ async function startServer() {
         console.log("Error Starting Server:", error.message);
     }
 }
-
 startServer();
