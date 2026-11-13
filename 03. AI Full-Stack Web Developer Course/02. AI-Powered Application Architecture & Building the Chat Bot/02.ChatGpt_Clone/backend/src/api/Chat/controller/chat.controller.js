@@ -30,6 +30,8 @@ export async function createConversationController(req, res) {
         }
     });
 }
+
+
 // Get recent conversations
 export async function getConversationController(req, res) {
     const conversations = await getRecentConversationsService();
@@ -38,6 +40,8 @@ export async function getConversationController(req, res) {
         data: conversations
     });
 }
+
+
 // Get a single conversation
 export async function getConversationByIdController(req, res) {
     const { conversationId } = req.params;
@@ -47,6 +51,7 @@ export async function getConversationByIdController(req, res) {
         data: conversation
     });
 }
+
 // Rename conversation
 export async function renameConversationController(req, res) {
     const { conversationId } = req.params;
@@ -61,6 +66,8 @@ export async function renameConversationController(req, res) {
         data: conversation
     });
 }
+
+
 // Delete conversation
 export async function deleteConversationController(req, res) {
     const { conversationId } = req.params;
@@ -71,10 +78,14 @@ export async function deleteConversationController(req, res) {
         data: result
     });
 }
+
+
 // Send a message
 export async function sendMessageController(req, res) {
     const { conversationId } = req.params;
     const { content } = req.body;
+
+
     // Save user message
     const userMessage = await sendMessageService(
         conversationId,
