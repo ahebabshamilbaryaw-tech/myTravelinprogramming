@@ -9,11 +9,14 @@ import {
     getMessagesService
 } from "../service/chat.service.js";
 import { generateAIResponse } from "../service/ai.service.js";
+
 // Create a new conversation
 export async function createConversationController(req, res) {
     const { question } = req.body;
+
     // Create conversation and save user message
     const conversation = await createConversationService(question);
+
     // Generate mock AI response
     const aiResponse = await generateAIResponse(question);
     // Save AI response
@@ -30,7 +33,6 @@ export async function createConversationController(req, res) {
         }
     });
 }
-
 
 // Get recent conversations
 export async function getConversationController(req, res) {
