@@ -15,13 +15,9 @@ The goal is to build an **Evangadi Information Bot** that can retrieve relevant 
 - Store and retrieve relevant information.
 - Connect retrieved context to an AI model.
 - Generate answers grounded in the available information.
-
 ## 🛠️ Technologies and Tools
-
 The technologies and tools used in this project will be documented as the implementation progresses.
-
 ## 🏗️ Implementation Steps
-
 1. Project setup
 2. Data collection and preparation
 3. Document loading
@@ -35,11 +31,8 @@ The technologies and tools used in this project will be documented as the implem
 ## 📌 Project Status
 
 **Status:** In Progress
-
 ## 📚 Learning Outcomes
 
 By completing this hands-on project, I aim to understand how to build a practical RAG-based information chatbot from the ground up.
-
 ## 📝 Notes
-
 Implementation details, important commands, challenges, and lessons learned will be added here during development.
